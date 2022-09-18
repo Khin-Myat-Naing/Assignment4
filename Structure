@@ -1,0 +1,119 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+int usernumber,input1,input2,input3,user;
+void fun1(int a,char b,int c,int d);
+void fun2(int a,char b,int c,int d);
+int pwd[10],amount[10];
+char username[100];
+int id[10];
+
+struct Data{
+    int did,dpwd,damount;
+
+
+
+
+};
+int main(){
+
+
+    FILE *fptr;
+    fptr=fopen("exam.txt","w");
+
+
+    printf("Press 1 to inset data\n");
+    printf("Press 2 to find data\n");
+    printf("Press 4 to update data\n");
+    printf("Please enter data:");
+    scanf("%d",&input1);
+    fun1(id,username,pwd,amount);
+    fun2(id,username,pwd,amount);
+
+
+
+
+
+
+
+
+
+}
+
+
+
+void fun1(int a,char b,int c,int d){
+
+    FILE *fptr;
+    fptr=fopen("exam.txt","a");
+    if(input1==1){
+            printf("Please enter number of user:");
+            scanf("%d",&usernumber);
+            for (int i=0;i<usernumber;i++){
+                printf("Please enter id:");
+                scanf("%d",&id[i]);
+
+            }
+            for (int j=0;j<usernumber;j++){
+                printf("Please enter user name:");
+                scanf("%s",&username);
+
+            }
+            for (int k=0;k<usernumber;k++){
+                printf("Please enter password:");
+                scanf("%d",&pwd[k]);
+
+            }
+            for (int l=0;l<usernumber;l++){
+                printf("Please enter amount:");
+                scanf("%d",&amount[l]);
+
+            }
+
+            fprintf(fptr,"%d %s %d %d %c",*id,username,*pwd,*amount,'\n');
+
+
+
+        fclose(fptr);
+
+
+
+    }
+}
+
+void fun2(int a,char b,int c,int d){
+    printf("Please enter 2 to find user khin's data or 3 to find user myat's data:");
+    scanf("%d",&user);
+    if (user==2){
+        struct Data *khin;
+        khin = (struct Data*)malloc(sizeof(struct Data));
+        khin->did=id[0];
+        printf("ID is:%d\n",khin->did);
+        khin->dpwd=pwd[0];
+        printf("Password is:%d\n",khin->dpwd);
+        khin->damount=amount[0];
+        printf("Amount is:%d\n",khin->damount);
+
+    }
+    if (user==3){
+        struct Data *myat;
+        myat = (struct Data*)malloc(sizeof(struct Data));
+        myat->did=id[1];
+        printf("ID is:%d\n",myat->did);
+        myat->dpwd=pwd[1];
+        printf("Password is:%d\n",myat->dpwd);
+        myat->damount=amount[1];
+        printf("Amount is:%d\n",myat->damount);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
